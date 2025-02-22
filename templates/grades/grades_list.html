@@ -31,10 +31,10 @@
               <td>{{ grade.grade_name }}</td>
               <td>{{ grade.grade_number }}</td>
               <td>
-                  <a href="/grades/6/update/">
+                  <a href="{% url 'grade_update' grade.pk %}">
                       <button class="add">编辑</button>
                   </a>
-                  <a href="/grades/6/delete/">
+                  <a href="">
                       <button class="del">删除</button>
                   </a>
               </td>

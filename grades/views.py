@@ -3,6 +3,7 @@ from django.views.generic import ListView, CreateView, UpdateView
 from grades.models import Grade
 from django.template.loader import get_template
 from django.db.models import Q
+from django.urls import reverse_lazy
 
 from grades.forms import GradeForm
 # Create your views here.
@@ -28,6 +29,7 @@ class GradeCreateView(CreateView):
     model = Grade
     template_name = 'grades/grade_form.html'
     form_class = GradeForm
+    success_url = reverse_lazy('grades_list')
 
 class GradeUpdateView(UpdateView):
     pass
