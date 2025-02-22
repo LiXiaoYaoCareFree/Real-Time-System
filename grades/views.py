@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from grades.models import Grade
 from django.template.loader import get_template
 from django.db.models import Q
@@ -32,4 +32,12 @@ class GradeCreateView(CreateView):
     success_url = reverse_lazy('grades_list')
 
 class GradeUpdateView(UpdateView):
-    pass
+    model = Grade
+    template_name = 'grades/grade_form.html'
+    form_class = GradeForm
+    success_url = reverse_lazy('grades_list')
+
+class GradeDeleteView(DeleteView):
+    model = Grade
+    template_name = 'grades/grade_delete_confirm.html'
+    success_url = reverse_lazy('grades_list')
