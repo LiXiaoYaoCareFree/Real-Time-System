@@ -1,14 +1,61 @@
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    {% for grade in grades %}
-        {{ grade.grade_name }} - {{ grade.grade_number }}
-    {% endfor %}
-</body>
-</html>
+{% block content %}
+<div class="right">
+  <div class="top">
+      <div class="tool">
+          <div class="class-info">
+              <form method="get" action="/grades/">
+                  <span>班级名称:</span>
+                  <input type="text" name="search" placeholder="搜索班级名称..." value="">
+                  <input type="submit" value="搜索">
+                  <a href="/grades/create/">
+                      <button type="button" class="add">新增</button>
+                  </a>
+              </form>
+          </div>
+      </div>
+  </div>
+  <div class="bottom">
+  <table>
+      <thead>
+          <tr>
+              <th>班级名称</th>
+              <th>班级编号</th>
+              <th>操作</th>
+          </tr>
+      </thead>
+      <tbody>
+       {% for grade in grades %}
+          <tr>
+              <td>{{ grade.grade_name }}</td>
+              <td>{{ grade.grade_number }}</td>
+              <td>
+                  <a href="/grades/6/update/">
+                      <button class="add">编辑</button>
+                  </a>
+                  <a href="/grades/6/delete/">
+                      <button class="del">删除</button>
+                  </a>
+              </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+
+  <!-- 分页导航 -->
+  <div class="pagination">
+      <span class="step-links">
+          <span class="step-links">
+            
+
+            <span class="current">
+                 1 / 1
+            </span>
+
+        </span>
+      </span>
+  </div>
+  </div>
+</div>
+{% endblock %}
