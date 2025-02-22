@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, UpdateView
 from grades.models import Grade
 from django.template.loader import get_template
 from django.db.models import Q
+
+from grades.forms import GradeForm
 # Create your views here.
 
 class GradeListView(ListView):
@@ -20,3 +22,12 @@ class GradeListView(ListView):
                 Q(grade_name__icontains=search) | Q(grade_number__icontains=search)
             )
         return queryset
+    
+
+class GradeCreateView(CreateView):
+    model = Grade
+    template_name = 'grades/grade_form.html'
+    form_class = GradeForm
+
+class GradeUpdateView(UpdateView):
+    pass
