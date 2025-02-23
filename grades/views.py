@@ -31,6 +31,8 @@ class GradeCreateView(CreateView):
     form_class = GradeForm
     success_url = reverse_lazy('grades_list')
 
+
+
 class GradeUpdateView(UpdateView):
     model = Grade
     template_name = 'grades/grade_form.html'

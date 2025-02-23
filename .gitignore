@@ -20,3 +20,5 @@ dump.rdb
 *.zip
 *.swp
 /db.sqlite3
+/1年1班考试成绩 .xlsx
+/1年1班学生信息.xlsx
